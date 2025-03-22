@@ -3,6 +3,7 @@
 import { cac } from "cac";
 import chalk from "chalk";
 import gradient from "gradient-string";
+
 import figlet from "figlet";
 // import { createProject } from './commands/create';
 // import { dockerizeProject } from './commands/dockerize';
@@ -11,34 +12,28 @@ import figlet from "figlet";
 const cli = cac("myFullStackCli");
 
 function showHeader() {
-  console.log(
-    gradient.cristal(
-      figlet.textSync("myFullStackCli", { horizontalLayout: "default" })
-    )
-  );
+  console.log(gradient.cristal(figlet.textSync("myFullStackCli", { horizontalLayout: "default" })));
   console.log(chalk.gray("A full-stack project setup tool for developers"));
   console.log();
 }
 
-cli.command("", "Run CLI in interactive mode").action(async () => {
+cli.command("", "Run CLI in interactive mode").action(() => {
   showHeader();
   // In future: show interactive main menu here
   console.log(chalk.green("Welcome! Let’s get started..."));
 });
 
-cli.command("create", "Create a new project").action(async () => {
+cli.command("create", "Create a new project").action(() => {
   showHeader();
   // await createProject();
 });
 
-cli
-  .command("dockerize", "Add Docker/Nginx to your project")
-  .action(async () => {
-    showHeader();
-    // await dockerizeProject();
-  });
+cli.command("dockerize", "Add Docker/Nginx to your project").action(() => {
+  showHeader();
+  // await dockerizeProject();
+});
 
-cli.command("setup-quality", "Install code quality tools").action(async () => {
+cli.command("setup-quality", "Install code quality tools").action(() => {
   showHeader();
   // await setupCodeQuality();
 });
