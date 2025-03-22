@@ -1,0 +1,35 @@
+{
+  "bin": {
+    "myFullStackCli": "./bin.js"
+  },
+  "name": "myfullstackcli",
+  "version": "1.0.0",
+  "description": "Use my Full Stack CLI to built app pre structure in minutes",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "link": "npm link && myFullStackCli --help",
+    "test": "pnpm build && npm run link"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/gradient-string": "^1.1.6",
+    "cac": "^6.7.14",
+    "chalk": "4",
+    "figlet": "^1.8.0",
+    "gradient-string": "2",
+    "inquirer": "^12.5.0"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.7.0",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^22.13.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
