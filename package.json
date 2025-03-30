@@ -1,17 +1,21 @@
 {
   "bin": {
-    "myFullStackCli": "./bin.js"
+    "initfs": "dist/index.js"
   },
-  "name": "myfullstackcli",
-  "version": "1.0.0",
+  "name": "initfs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.0.3",
   "description": "Use my Full Stack CLI to built app pre structure in minutes",
-  "main": "index.js",
-  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
-    "dev": "ts-node src/index.ts",
-    "build": "tsc",
+    "build": "tsc && tsc-esm-fix dist",
     "start": "node dist/index.js",
-    "link": "npm link && myFullStackCli --help",
+    "dev": "clear && pnpm build && pnpm start",
+    "link": "npm link",
     "test": "pnpm build && npm run link",
     "prepare": "husky install",
     "lint": "eslint . --ext .ts --fix",
@@ -19,26 +23,32 @@
     "lint-staged": "lint-staged",
     "spell-check": "cspell '**/*.{ts,js,json,md}'",
     "commit": "bash scripts/quick-commit.sh",
-    "commit:force": "bash scripts/quick-commit.sh --no-verify"
+    "commit:force": "bash scripts/quick-commit.sh --no-verify",
+    "prepublishOnly": "pnpm build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Deepak Mandal",
   "license": "ISC",
   "dependencies": {
     "@types/gradient-string": "^1.1.6",
     "cac": "^6.7.14",
     "chalk": "4",
+    "execa": "^9.5.2",
     "figlet": "^1.8.0",
+    "fs-extra": "^11.3.0",
+    "globby": "^14.1.0",
     "gradient-string": "2",
-    "inquirer": "^12.5.0"
+    "prompts": "^2.4.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@eslint/js": "^9.23.0",
     "@types/figlet": "^1.7.0",
+    "@types/fs-extra": "^11.0.4",
     "@types/inquirer": "^9.0.7",
     "@types/node": "^22.13.11",
+    "@types/prompts": "^2.4.9",
     "commitlint": "^19.8.0",
     "cspell": "^8.17.5",
     "eslint": "^9.23.0",
@@ -47,6 +57,7 @@
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
+    "tsc-esm-fix": "^3.1.2",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.27.0"
   },
@@ -55,5 +66,9 @@
       "eslint --fix",
       "prettier --write"
     ]
-  }
+  },
+  "files": [
+    "dist",
+    "bin.js"
+  ]
 }
