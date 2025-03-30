@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
+    "module": "ESNext", // ✅ Good for ESM
+    "target": "ES2020", // ✅ Modern Node features
+    "moduleResolution": "node", // ✅ Resolve node_modules correctly
+    "outDir": "dist", // ✅ Output folder
     "esModuleInterop": true,
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "resolveJsonModule": true
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
   },
-  "include": ["src"],
+  "ts-node": {
+    "esm": true
+  },
+  "include": ["src/**/*.ts"], // ✅ Targets all source files
   "exclude": ["node_modules", "dist", "bin.js"]
 }

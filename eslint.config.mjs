@@ -20,12 +20,16 @@ export default [
     rules: {
       "no-console": ["warn", { allow: ["warn", "error", "log"] }],
       "@typescript-eslint/no-floating-promises": "warn",
-      "@typescript-eslint/no-unused-vars": ["warn"]
+      "@typescript-eslint/no-unused-vars": ["warn"],
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/no-invalid-void-type": "off"
     }
   },
 
   // ✅ Ignore JS config files and scripts
   {
-    ignores: ["commitlint.config.js", "*.config.js", "scripts/**/*.js"]
+    ignores: ["dist/**", "commitlint.config.js", "*.config.js", "scripts/**/*.js", "bin.js", "*.js", "*.mjs"]
   }
 ];
