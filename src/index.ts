@@ -12,6 +12,7 @@ import { AddUIComponents } from "./commands/add-ui";
 import { AbsolutePaths } from "./commands/absolutePaths";
 import { AddUtils } from "./commands/addUtils";
 import { AddCodeQuality } from "./commands/AddCodeQality";
+import { cleanUp } from "./commands/cleanUp";
 
 const cli = cac("myFullStackCli");
 
@@ -61,10 +62,16 @@ cli.command("Absolute Paths", "Synchronize Absolute Path in Project").action(asy
   await AbsolutePaths();
 });
 
-cli.command("Quality", "Add Code Quality").action(async () => {
+// cli.command("Quality", "Add Code Quality").action(async () => {
+//   Banner();
+//   // this contains hooks and utils
+//   await AddCodeQuality();
+// });
+
+cli.command("clean", "Cleaning up").action(async () => {
   Banner();
   // this contains hooks and utils
-  await AddCodeQuality();
+  await cleanUp();
 });
 
 cli.help();

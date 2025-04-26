@@ -14,7 +14,7 @@ export const doYouWantToAddCodeQuality: Step = {
 export const doYouWantToUIComponents: Step = {
   name: "doYouWantToAddUIComponents",
   type: "select",
-  message: "Do you want to add UI ComponentsTools?",
+  message: "Do you want to add UI Components Tools?",
   choices: [
     { title: "Yes", value: "yes" },
     { title: "No", value: "no" },

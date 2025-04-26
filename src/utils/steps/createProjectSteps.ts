@@ -1,80 +1,38 @@
 import { Step } from "../../types";
+import { constant, Messages, techStacks, FrameworkTitles } from "../constants";
 
 const createFrontendProject: Step = {
-  name: "Choose Frontend Framework",
+  name: Messages.chooseFramework.frontend,
   type: "select",
-  message: "Choose Frontend Framework",
+  message: Messages.chooseFramework.frontend,
   choices: [
-    { title: "vite", value: "vite" },
-    { title: "next", value: "next" },
-    { title: "Astro (coming soon)", value: "astro" }
+    { title: FrameworkTitles.vite, value: techStacks.vite },
+    { title: FrameworkTitles.next, value: techStacks.nextjs }
   ]
 };
 
-// todo
 const createBackendProject: Step = {
-  name: "Choose Backend Framework",
+  name: Messages.chooseFramework.backend,
   type: "select",
-  message: "Choose Backend Framework",
+  message: Messages.chooseFramework.backend,
   choices: [
-    { title: "Express JS (coming Soon)", value: "express" },
-    { title: "Fastify JS (coming Soon)", value: "fastify" },
-    { title: "Nest JS", value: "nest" }
+    { title: FrameworkTitles.express, value: techStacks.express },
+    { title: FrameworkTitles.fastify, value: techStacks.fastify },
+    { title: FrameworkTitles.nest, value: techStacks.nestjs }
   ]
 };
 
 export const createProjectSteps: Step = {
-  name: "projectType",
+  name: constant.projectsType,
   type: "select",
-  message: "Create Frontend or Backend Project?",
+  message: Messages.createProjects.projectsType,
   choices: [
-    { title: "Frontend", value: "frontend" },
-    { title: "Backend", value: "backend" },
-    { title: "Go Back", value: "back" }
+    { title: constant.frontend, value: constant.frontend },
+    { title: constant.backend, value: constant.backend },
+    { title: constant.goBack, value: constant.goBack }
   ],
   next: {
     frontend: createFrontendProject,
     backend: createBackendProject
   }
 };
-
-// export const createProjectSteps: Step = {
-//   name: "useCurrentFolder",
-//   type: "select",
-//   message: "Continue in current folder?",
-//   choices: [
-//     { title: "Yes", value: "yes" },
-//     { title: "No (Enter project name)", value: "no" },
-//     { title: "Go Back", value: "back" }
-//   ],
-//   next: {
-//     yes: projectType,
-//     no: {
-//       name: "projectName",
-//       type: "text",
-//       message: "Enter your project name",
-//       defaultNext: projectType,
-//       validate: (value: string) => {
-//         if (value === "") {
-//           return "Project name cannot be empty";
-//         }
-//         return true;
-//       }
-//     }
-//   }
-// };
-
-// export const createProjectSteps: Step = {
-//   name: "languageChoice",
-//   type: "select",
-//   message: "Choose Language",
-//   choices: [
-//     { title: "TypeScript", value: "ts" },
-//     { title: "JavaScript", value: "js" },
-//     { title: "Go Back", value: "back" }
-//   ],
-//   next: {
-//     ts: projectRoot,
-//     js: projectRoot
-//   }
-// };

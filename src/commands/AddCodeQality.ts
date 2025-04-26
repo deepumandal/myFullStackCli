@@ -1,1 +1,3 @@
-export const AddCodeQuality = async () => {};
+export const AddCodeQuality = () => {
+  console.log("adding code quality");
+};

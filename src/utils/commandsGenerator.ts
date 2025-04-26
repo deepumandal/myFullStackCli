@@ -16,5 +16,7 @@ export const commandsGenerator = async (answers: Record<string, string>): Promis
     )
     .map((result) => result.value)
     .join(" && ");
+
+  console.log("Commands generated:", commands, allSettled);
   return commands;
 };
