@@ -14,5 +14,5 @@
     "esm": true
   },
   "include": ["src/**/*.ts"], // ✅ Targets all source files
-  "exclude": ["node_modules", "dist", "bin.js"]
+  "exclude": ["node_modules", "dist", "bin.js", "src_old"]
 }

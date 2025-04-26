@@ -1,6 +1,6 @@
 import { Step } from "../../types";
 
-export const codeQualitySteps: Step = {
+export const createCodeQualitySteps: Step = {
   name: "setupCodeQuality",
   type: "multiselect",
   message: "Select tools to setup",

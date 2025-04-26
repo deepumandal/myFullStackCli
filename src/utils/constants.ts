@@ -1,39 +1,45 @@
-export const techStacks = {
-  vite: "vite",
-  nextjs: "nextjs",
-  react: "react",
-  express: "express",
-  fastify: "fastify",
-  nestjs: "nestjs"
+export const messagesConstants = {
+  welcome: "My Full Stack CLI TOOL\n",
+  description: "🚀 A full-stack project setup tool for developers 🛠️\n",
+  mainCMDMessage: "What would you like to do?",
+  main: {
+    createProject: "Create a new project",
+    setupCodeQuality: "Setup code quality",
+    dockerizeProject: "Dockerize your project",
+    addUiComponents: "Add UI components",
+    addCustomHooks: "Add custom hooks",
+    addUtilityComponents: "Add utility components",
+    syncPaths: "Synchronize absolute paths",
+    scanProject: "Scan project for vulnerabilities",
+    exit: "Exit CLI"
+  },
+  createFrontend: "Create Frontend",
+  createBackend: "Create Backend",
+  createProject: "Create Project",
+  dockerizeProject: "Choose Docker/Nginx",
+  setupCodeQuality: "Setup Code Quality"
 };
 
-export const constant = {
+export const choicesConstants = {
+  create: "create",
+  codeQuality: "codeQuality",
+  dockerize: "dockerize",
+  ReactJS: "React",
+  NextJS: "Next.js",
+  NestjS: "Nest.js",
+  ExpressJS: "Express.js",
+  FastifyJs: "Fastify",
   frontend: "frontend",
   backend: "backend",
-  projectsType: "projectType",
-  goBack: "Go Back",
-  createBackendProject: "CreateBackendProject",
-  createFrontendProject: "CreateFrontendProject"
+  goBack: "goBack",
+  exit: "exit"
 };
 
-export const Messages = {
-  createProjects: {
-    projectsType: "Create Frontend or Backend Project?",
-    frontend: "Create Frontend Project?",
-    backend: "Create Backend Project?",
-    goBack: "Go Back",
-    chooseFramework: "Choose Frontend Framework"
-  },
-  chooseFramework: {
-    frontend: "Choose Frontend Framework",
-    backend: "Choose Backend Framework"
-  }
-};
-
-export const FrameworkTitles = {
-  vite: "Vite",
-  next: "Next.js",
-  express: "Express JS (coming Soon)",
-  fastify: "Fastify JS (coming Soon)",
-  nest: "Nest JS"
+export const namesConstants = {
+  main: "main",
+  createProject: "createProject",
+  createFrontend: "createFrontend",
+  createBackend: "createBackend",
+  dockerize: "dockerize",
+  createCodeQuality: "createCodeQuality"
 };
