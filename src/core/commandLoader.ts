@@ -19,3 +19,13 @@ export const loadAllCommands = (cli: CAC) => {
   //   cli.command("add-utils", "Add Utility hooks and helpers").action(addUtils);
   //   cli.command("add-absolute-paths", "Setup Absolute Imports").action(addAbsolutePaths);
 };
+/**
+ *
+ * kl different templates bnane hain joh v type ka project serve krna hai uska and ussme pre-built folder structure ho
+ * kuch cheje joh ki extra ho skhti hai unhe ristrict krna hai vo based on user preference install hongi bakki sbh ese hi default honi chaiye
+ * for example  folder strucuture ho or baki cheje jese components utils voh user preference based honi chaiye like light dark mode
+ * jadha complex nhi kerna hai joh v m use krta hu voh sbh dena hai
+ * bss
+ * baki baad m dekhenge ki ager kux alag required hui toh first priority pe add nessacary cheje hi add karna hai 😀
+ *
+ */

@@ -1,18 +1,21 @@
+import { commandsGenerator } from "../core/commandsGenerator";
+import { runPrompts } from "../core/runPrompt";
+import { createProjectSteps } from "../core/steps/createProjectSteps";
+
 export const createProjectCMD = async () => {
   console.log("Creating a new project...");
 
-  await Promise.resolve(0); // Simulate async operation
-  // const answers = await runPrompts(createProjectSteps);
+  const answers = await runPrompts(createProjectSteps);
 
-  // console.log("\n📝 Answers:");
-  // console.log(answers);
-  // const commands = await commandsGenerator(answers);
+  console.log("\n📝 Answers:");
+  console.log(answers);
+  const commands = await commandsGenerator(answers);
 
-  // console.log("\n📝 Answers: 2");
-  // console.log(commands);
+  console.log("\n📝 Answers: 2");
+  console.log("commands", commands);
 
   // console.log("testing log cmds", commands);
-  // // comment this cmd if you don't want to run the commands
+  // comment this cmd if you don't want to run the commands
   // await executeCommands(commands);
 
   console.log("would you like to add code quality?");
