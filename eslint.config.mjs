@@ -30,6 +30,15 @@ export default [
 
   // ✅ Ignore JS config files and scripts
   {
-    ignores: ["dist/**", "commitlint.config.js", "*.config.js", "scripts/**/*.js", "bin.js", "*.js", "*.mjs"]
+    ignores: [
+      "dist/**",
+      "commitlint.config.js",
+      "*.config.js",
+      "scripts/**/*.js",
+      "bin.js",
+      "*.js",
+      "*.mjs",
+      "src/templates/**"
+    ]
   }
 ];
