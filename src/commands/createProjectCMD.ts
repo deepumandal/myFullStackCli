@@ -11,7 +11,6 @@ export const createProjectCMD = async () => {
   console.log(answers);
   const commands = await commandsGenerator(answers);
 
-  console.log("\n📝 Answers: 2");
   console.log("commands", commands);
 
   // console.log("testing log cmds", commands);
