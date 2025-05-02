@@ -2,15 +2,18 @@ import js from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
+import { defineConfig } from "eslint/config";
 import pluginImport from "eslint-plugin-import";
 import pluginA11y from "eslint-plugin-jsx-a11y";
 import pluginReactHooks from "eslint-plugin-react-hooks";
 import pluginCSpell from "@cspell/eslint-plugin";
 import prettierPlugin from "eslint-plugin-prettier";
-import { defineConfig } from "eslint/config";
+import prettierConfig from "eslint-config-prettier";
+
 
 export default defineConfig([
-  // === Shared JS/TS Setup ===
+  tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended,
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
@@ -19,12 +22,12 @@ export default defineConfig([
         ecmaVersion: "latest",
         sourceType: "module",
         project: "./tsconfig.json",
-        ecmaFeatures: { jsx: true },
+        ecmaFeatures: { jsx: true }
       },
       globals: {
         ...globals.browser,
-        ...globals.node,
-      },
+        ...globals.node
+      }
     },
     plugins: {
       js,
@@ -38,21 +41,22 @@ export default defineConfig([
     },
     settings: {
       react: {
-        version: "detect",
+        version: "detect"
       },
       "import/resolver": {
         typescript: {
-          directory: "./tsconfig.json",
+          directory: "./tsconfig.json"
         },
         node: {
-          extensions: [".js", ".jsx", ".ts", ".tsx"],
-        },
-      },
+          extensions: [".js", ".jsx", ".ts", ".tsx"]
+        }
+      }
     },
     rules: {
       ...js.configs.recommended.rules,
       ...tseslint.configs.recommended.rules,
       ...pluginReact.configs.flat.recommended.rules,
+      ...prettierConfig.rules,
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "error",
       "react/jsx-uses-vars": "error",
@@ -60,11 +64,21 @@ export default defineConfig([
         "error",
         {
           namedComponents: "arrow-function",
-          unnamedComponents: "arrow-function",
-        },
+          unnamedComponents: "arrow-function"
+        }
       ],
       "arrow-body-style": ["error", "as-needed"],
-      "no-unused-vars": "error",
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          vars: "all",
+          args: "after-used",
+          ignoreRestSiblings: true,
+          varsIgnorePattern: "^_", // optional: allow _ignored vars
+          argsIgnorePattern: "^_" // optional: allow _ignored args
+        }
+      ],
       "react/jsx-filename-extension": ["warn", { extensions: [".jsx", ".tsx"] }],
       "import/no-unresolved": "error",
       "import/no-duplicates": "error",
@@ -86,66 +100,65 @@ export default defineConfig([
             {
               pattern: "react|react-dom|react-router-dom",
               group: "external",
-              position: "before",
+              position: "before"
             },
             {
               pattern: "components/**",
               group: "internal",
-              position: "after",
+              position: "after"
             },
             {
               pattern: "utils/**",
               group: "internal",
-              position: "after",
+              position: "after"
             },
             {
               pattern: "const/**",
               group: "internal",
-              position: "after",
+              position: "after"
             },
             {
               pattern: "redux/**",
               group: "internal",
-              position: "after",
+              position: "after"
             },
             {
               pattern: "selectors/**",
               group: "internal",
-              position: "after",
+              position: "after"
             },
             {
               pattern: "images/**",
               group: "internal",
-              position: "after",
+              position: "after"
             },
             {
               pattern: "style/**",
               group: "internal",
-              position: "after",
-            },
+              position: "after"
+            }
           ],
           pathGroupsExcludedImportTypes: ["builtin", "external"],
           alphabetize: {
             order: "asc",
-            caseInsensitive: true,
-          },
-        },
+            caseInsensitive: true
+          }
+        }
       ],
       "prettier/prettier": [
         "error",
         {
           printWidth: 80,
-          trailingComma: "es5",
+          trailingComma: "none",
           bracketSpacing: true,
           bracketSameLine: false,
           arrowParens: "always",
-          endOfLine: "auto",
-        },
-      ],
-    },
+          endOfLine: "auto"
+        }
+      ]
+    }
   },
 
-  // === Ignore Patterns ===
   {
     ignores: [
       ".next",
@@ -160,7 +173,7 @@ export default defineConfig([
       "next.config.mjs",
       "tailwind.config.js",
       "tailwind.config.ts",
-      "appSchema.ts",
-    ],
-  },
+      "appSchema.ts"
+    ]
+  }
 ]);

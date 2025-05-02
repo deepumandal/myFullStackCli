@@ -1,9 +1,9 @@
 import Script from "next/script";
-import  { ReactNode } from "react";
+import { ReactNode } from "react";
 
 const JsonLdScripts = ({
   children,
-  id,
+  id
 }: {
   children: ReactNode;
   id: string;

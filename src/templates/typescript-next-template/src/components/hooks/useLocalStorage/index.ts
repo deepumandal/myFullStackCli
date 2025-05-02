@@ -7,7 +7,7 @@ function useLocalStorage<T>(key: string, initialValue: T) {
   const getStoredValue = (): T => {
     try {
       const item = window.localStorage.getItem(key);
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+
       return item ? JSON.parse(item) : initialValue;
     } catch (error) {
       console.error(error);
@@ -28,7 +28,7 @@ function useLocalStorage<T>(key: string, initialValue: T) {
   }, [key, storedValue]);
 
   // Return the state and a function to update it
-  // eslint-disable-next-line no-unused-vars
+
   const setValue = (value: T | ((val: T) => T)) => {
     setStoredValue((prevValue) => {
       const valueToStore = value instanceof Function ? value(prevValue) : value;

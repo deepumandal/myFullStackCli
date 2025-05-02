@@ -1,14 +1,14 @@
 import { forwardRef, JSX } from "react";
 import { AnyType } from "@AppTypes/AnyType";
+import { CommonProps } from "@Config/ui/asElement";
+import { color } from "@UI/Common";
 import { ClassType, cn } from "@Utils/ClassName";
 import {
   gridColumnsObj,
   gapObj,
   GridColumnsType,
-  GapType,
+  GapType
 } from "./utils/style-object";
-import { CommonProps } from "@Config/ui/asElement";
-import { color } from "@UI/Common";
 
 type GridProps = CommonProps<"Grid"> & {
   columns: GridColumnsType;

@@ -2,17 +2,18 @@ import type { Metadata } from "next";
 import { ReactNode } from "react";
 import "@GlobalCss";
 import { getOrThrowEnv } from "@Config/env-provider";
-import { SEO } from "@Static/SEO";
 import { ThemeProvider } from "@HOC/theme";
+import { SEO } from "@Static/SEO";
 
 export const metadata: Metadata = {
-  ...SEO};
+  ...SEO
+};
 
 const isProduction = process.env.NODE_ENV === "production";
 
 /* eslint-disable react/display-name */
 export default ({
-  children,
+  children
 }: Readonly<{
   children: ReactNode;
 }>) => (

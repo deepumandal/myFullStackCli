@@ -1,13 +1,13 @@
 import { Slot } from "@radix-ui/react-slot";
 import { CSSProperties, JSX } from "react";
+import { CommonProps } from "@Config/ui/asElement";
+import { ColorVariantsType } from "@Config/ui/colors-variants";
 import { cn } from "@Utils/ClassName";
 import {
   HeadingVariants,
   TextVariants,
-  asElementObject,
+  asElementObject
 } from "./utils/TypographyClasses";
-import { ColorVariantsType } from "@Config/ui/colors-variants";
-import { CommonProps } from "@Config/ui/asElement";
 
 type variantsType = ColorVariantsType;
 
@@ -36,6 +36,7 @@ const Typography = ({
 }: TypographyProps): JSX.Element => {
   const Comp = asChild ? Slot : Element;
 
+  console.log("Typography", asElementObject[Element]);
   return (
     <Comp
       id={id}

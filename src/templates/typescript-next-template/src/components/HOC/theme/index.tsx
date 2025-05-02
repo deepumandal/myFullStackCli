@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { isClientSide } from "@Utils/ClientOnly";
 
 type Theme = "dark" | "light" | "system";
@@ -8,7 +8,7 @@ type Theme = "dark" | "light" | "system";
 const local: Theme = "light";
 
 type ThemeProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   defaultTheme?: Theme;
   storageKey?: string;
 };
@@ -16,14 +16,14 @@ type ThemeProviderProps = {
 type ThemeProviderState = {
   theme: Theme;
   isDarkTheme: boolean;
-  // eslint-disable-next-line no-unused-vars
+
   setTheme: (theme: Theme) => void;
 };
 
 const initialState: ThemeProviderState = {
   theme: local,
   setTheme: () => null,
-  isDarkTheme: false,
+  isDarkTheme: false
 };
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
@@ -37,7 +37,6 @@ const ThemeProvider = ({
   const storageData = isClientSide() ? localStorage.getItem(storageKey) : null;
 
   const [theme, setTheme] = useState<Theme>(
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     () => (storageData as Theme) || defaultTheme
   );
   const [isDarkTheme, setIsDarkTheme] = useState(initialState.isDarkTheme);
@@ -71,7 +70,7 @@ const ThemeProvider = ({
     setTheme: (data: Theme) => {
       localStorage.setItem(storageKey, data);
       setTheme(data);
-    },
+    }
   };
 
   return (

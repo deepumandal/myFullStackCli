@@ -1,4 +1,3 @@
-
 import { asTypographyType } from "@Config/ui/asElement";
 import { ColorVariantsType } from "@Config/ui/colors-variants";
 import { ClassType } from "@Utils/ClassName";
@@ -16,7 +15,7 @@ const asElementObject: asElementObjectType = {
   h6: "h6",
   p: "p",
   span: "span",
-  strong: "strong",
+  strong: "strong"
 } as const;
 
 type Variants = Exclude<ColorVariantsType, "background">;
@@ -27,7 +26,7 @@ const HeadingVariants: Record<Variants, ClassType> = {
   destructive: "header-destructive-variant",
   muted: "header-muted-variant",
   primary: "header-primary-variant",
-  secondary: "header-secondary-variant",
+  secondary: "header-secondary-variant"
 } as const;
 
 const TextVariants: Record<Variants, ClassType> = {
@@ -36,12 +35,12 @@ const TextVariants: Record<Variants, ClassType> = {
   destructive: "text-destructive-variant",
   muted: "text-muted-variant",
   primary: "text-primary-variant",
-  secondary: "text-secondary-variant",
+  secondary: "text-secondary-variant"
 } as const;
 
 export {
   type asElementObjectType,
   asElementObject,
   HeadingVariants,
-  TextVariants,
+  TextVariants
 };

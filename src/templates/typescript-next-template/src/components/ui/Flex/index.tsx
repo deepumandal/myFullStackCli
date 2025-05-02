@@ -1,6 +1,8 @@
 import { Slot } from "@radix-ui/react-slot";
 import { AriaRole, CSSProperties, forwardRef, JSX } from "react";
 import { AnyType } from "@AppTypes/AnyType";
+import { CommonProps } from "@Config/ui/asElement";
+import { color } from "@UI/Common";
 import { type ClassType, cn } from "@Utils/ClassName";
 import {
   FlexDirectionType,
@@ -11,10 +13,8 @@ import {
   alignContentObj,
   alignItemsObj,
   directionObj,
-  justifyObj,
+  justifyObj
 } from "./utils/style-object";
-import { CommonProps } from "@Config/ui/asElement";
-import { color } from "@UI/Common";
 
 type FlexProps = CommonProps<"flex"> & {
   flexDirection?: FlexDirectionType;
@@ -64,7 +64,7 @@ const Flex = forwardRef<AnyType, FlexProps>(
           directionObj[flexDirection],
           alignItemsObj[alignItems],
           alignContentObj[alignContent],
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
           color[BackgroundColor] as ClassType,
 
           className
@@ -87,5 +87,5 @@ export {
   type AriaRole,
   type FlexDirectionType,
   type FlexElementType,
-  type JustifyContentType,
+  type JustifyContentType
 };

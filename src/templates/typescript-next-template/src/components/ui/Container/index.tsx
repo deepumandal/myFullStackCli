@@ -1,8 +1,8 @@
 import { Slot } from "@radix-ui/react-slot";
 import { forwardRef, JSX } from "react";
 import { AnyType } from "@AppTypes/AnyType";
-import { cn } from "@Utils/ClassName";
 import { CommonProps } from "@Config/ui/asElement";
+import { cn } from "@Utils/ClassName";
 
 type ContainerProps = Omit<CommonProps<"container">, "BackgroundColor"> & {
   ScreenType: "container" | "full-screen";
