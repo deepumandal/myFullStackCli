@@ -38,7 +38,10 @@ export default [
       "bin.js",
       "*.js",
       "*.mjs",
-      "src/templates/**"
+      "src/templates/**",
+      "src/templates/typescript-next-template/**",
+      "src_old/**",
+      "eslint.config.mjs"
     ]
   }
 ];

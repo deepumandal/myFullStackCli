@@ -63,8 +63,8 @@
   },
   "lint-staged": {
     "*.{ts,js}": [
-      "eslint --fix",
-      "prettier --write"
+      "pnpm lint",
+      "pnpm format"
     ]
   },
   "files": [
