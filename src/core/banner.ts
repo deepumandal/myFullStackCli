@@ -6,6 +6,8 @@ import { messagesConstants } from "../utils/constants";
 const { welcome, description } = messagesConstants;
 
 export const printBanner = () => {
+  // eslint-disable-next-line no-console
+  console.clear();
   console.log(gradient.cristal(figlet.textSync(welcome, { horizontalLayout: "default" })));
   console.log(chalk.gray(description));
 };

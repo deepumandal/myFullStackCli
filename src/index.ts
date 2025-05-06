@@ -3,6 +3,7 @@
 import cac from "cac";
 import { printBanner } from "./core/banner";
 import { loadAllCommands } from "./core/commandLoader";
+import { addUIComponentsCMD } from "./commands/installUIComponents";
 const cli = cac("myFullStackCli");
 
 // Always show Banner once

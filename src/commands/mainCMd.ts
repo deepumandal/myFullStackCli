@@ -5,14 +5,14 @@ import { choicesConstants, namesConstants } from "../utils/constants";
 import { AddCodeQualityCMD } from "./addCodeQualityCMd";
 import { dockerizeProjectCMd } from "./createDockerSetupCMD";
 import { createProjectCMD } from "./createProjectCMD";
+import { addUIComponentsCMD } from "./installUIComponents";
+import { addUtilsCMD } from "./installUtilsCMD";
 
-const { create, dockerize, codeQuality } = choicesConstants;
+const { create, dockerize, codeQuality, addUIComponents, addUtils } = choicesConstants;
 const { main } = namesConstants;
 
 export const mainCMd = async () => {
   const answers: AnyType = await runPrompts(mainStep);
-
-  console.log("answers", answers);
 
   switch (answers[main]) {
     case create:
@@ -23,6 +23,12 @@ export const mainCMd = async () => {
       break;
     case codeQuality:
       await AddCodeQualityCMD();
+      break;
+    case addUIComponents:
+      await addUIComponentsCMD();
+      break;
+    case addUtils:
+      await addUtilsCMD();
       break;
     default:
       return null;

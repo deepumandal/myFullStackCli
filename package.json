@@ -12,7 +12,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "tsc && tsc-esm-fix dist",
+    "build": "tsc && tsc-esm-fix dist && node scripts/copyTemplates.mjs",
     "start": "node dist/index.js",
     "dev": "clear && pnpm build && pnpm start",
     "link": "npm link",
@@ -38,6 +38,7 @@
     "fs-extra": "^11.3.0",
     "globby": "^14.1.0",
     "gradient-string": "2",
+    "ora": "^8.2.0",
     "prompts": "^2.4.2"
   },
   "devDependencies": {

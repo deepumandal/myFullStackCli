@@ -9,38 +9,41 @@ export async function runPrompts(
   let currentStep: Step | undefined = step;
   const stack: Step[] = [];
 
+  console.log("🔍 Initial Step:", currentStep.name); // Debug log
+
   while (currentStep) {
+    console.log(`🟢 Current Step: ${currentStep.name}`); // Debug log
+    console.log(`🔵 Stack:`, stack.map((s) => s.name)); // Debug log
+
     const response = await prompts(currentStep);
+    console.log(`🟡 User Response:`, response); // Debug log
 
     const key = currentStep.name;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const userChoice = response[key];
 
     if (userChoice === "exit") {
       console.log("👋 Exiting...");
-      process.exit(0);
+    process.exit(0);
     }
 
     if (userChoice === "back") {
+      console.log("🔙 Going back to the previous step...");
       currentStep = stack.pop();
       continue;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     answers[key] = userChoice;
 
     let nextStep: Step | undefined;
 
-    // Allow dynamic step from action
     if (currentStep.action) {
+      console.log(`⚙️ Executing action for step: ${currentStep.name}`); // Debug log
       const result = await currentStep.action(answers);
       if (result && typeof result === "object" && result.name) {
         nextStep = result;
       }
     }
 
-    // Prioritize: action > next[userChoice] > defaultNext
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!nextStep && currentStep.next && currentStep.next[userChoice]) {
       nextStep = currentStep.next[userChoice];
     }
@@ -53,9 +56,9 @@ export async function runPrompts(
       stack.push(currentStep);
     }
 
-    // console.table(stack)
     currentStep = nextStep;
   }
 
+  console.log("✅ Final Answers:", answers); // Debug log
   return answers;
 }
