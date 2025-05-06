@@ -1,11 +1,12 @@
 import { Step } from "../../types";
 import { messagesConstants, namesConstants, choicesConstants } from "../../utils/constants";
 
-const { createBackend, createFrontend, createProject } = namesConstants;
+const { createBackend, createFrontend, createProject, chooseProjectName } = namesConstants;
 const {
   createBackend: createBackendMessage,
   createFrontend: createFrontendMessage,
-  createProject: createProjectMessage
+  createProject: createProjectMessage,
+  chooseProjectName: chooseProjectNameMessage
 } = messagesConstants;
 const {
   ExpressJS: expressJS,
@@ -40,16 +41,27 @@ const createBackendProject: Step = {
 };
 
 export const createProjectSteps: Step = {
-  name: createProject,
-  type: "select",
-  message: createProjectMessage,
-  choices: [
-    { title: frontend, value: frontend },
-    { title: backend, value: backend },
-    { title: goBack, value: goBack }
-  ],
-  next: {
-    frontend: createFrontendProject,
-    backend: createBackendProject
+  name: chooseProjectName,
+  type: "text",
+  message: chooseProjectNameMessage,
+  validate: (value) => {
+    if (value.length === 0) {
+      return "Please enter a project name.";
+    }
+    return true;
+  },
+  defaultNext: {
+    name: createProject,
+    type: "select",
+    message: createProjectMessage,
+    choices: [
+      { title: frontend, value: frontend },
+      { title: backend, value: backend },
+      { title: goBack, value: goBack }
+    ],
+    next: {
+      frontend: createFrontendProject,
+      backend: createBackendProject
+    }
   }
 };
