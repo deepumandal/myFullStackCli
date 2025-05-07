@@ -1,12 +1,11 @@
 import { choicesConstants, messagesConstants, namesConstants } from "../utils/constants";
 import { Step } from "../types";
 import { selectMultipleOptionsSteps } from "./steps/addUIComponentsSteps";
-import { UIConfigs } from "../templates/extra-templates/config";
+import { UIConfigs } from "../templates/UI-templates/config";
 
 const { packageManager } = namesConstants;
 const { packageManager: packageManagerMessage } = messagesConstants;
 const { yarn, npm, pnpm, bun } = choicesConstants;
-
 
 export const choosePackageManagerStep: Step = {
   name: packageManager,
@@ -17,6 +16,5 @@ export const choosePackageManagerStep: Step = {
     { title: "yarn", value: "yarn" },
     { title: "pnpm", value: "pnpm" },
     { title: "bun", value: "bun" }
-  ],
+  ]
 };
-;

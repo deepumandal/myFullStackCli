@@ -3,26 +3,65 @@ import { mainCMd } from "../commands/mainCMd";
 import { createProjectCMD } from "../commands/createProjectCMD";
 import { dockerizeProjectCMd } from "../commands/createDockerSetupCMD";
 import { AddCodeQualityCMD } from "../commands/addCodeQualityCMd";
-import { handleUserInterrupt } from "./userInterrupt";
 import { addUIComponentsCMD } from "../commands/installUIComponents";
 import { addUtilsCMD } from "../commands/installUtilsCMD";
-// import { createProject } from "../commands/createProjectCMD";
-// import { dockerizeProject } from "../commands/dockerizeProjectCMD";
-// import { addUIComponents } from "../commands/addUIComponentsCMD";
-// import { addUtils } from "../commands/addUtilsCMD";
-// import { addAbsolutePaths } from "../commands/addAbsolutePathsCMD";
-// import { addCodeQuality } from "../commands/addCodeQualityCMD";
+import { handleUserInterrupt } from "./userInterrupt";
 
 export const loadAllCommands = (cli: CAC) => {
-  handleUserInterrupt()
-  cli.command("", "Interactive mode").action(mainCMd);
-  cli.command("create", "Create a new project").action(createProjectCMD);
-  cli.command("docker", "Add Docker/Nginx to your project").action(dockerizeProjectCMd);
-  cli.command("quality", "Add Code Quality (ESLint, Prettier, Husky)").action(AddCodeQualityCMD);
-  cli.command("ui", "Add UI components").action(addUIComponentsCMD)
-  cli.command("utils", "Add Utils").action(addUtilsCMD)
+  // Register Ctrl+C, unhandledRejection, etc.
+  handleUserInterrupt();
 
-  //   cli.command("add-ui", "Add UI components").action(addUIComponents);
-  //   cli.command("add-utils", "Add Utility hooks and helpers").action(addUtils);
-  //   cli.command("add-absolute-paths", "Setup Absolute Imports").action(addAbsolutePaths);
+  cli.command("", "Interactive mode").action(async () => {
+    try {
+      await mainCMd();
+    } catch (err) {
+      console.error("❌ Error in interactive mode:", err);
+      process.exit(1);
+    }
+  });
+
+  cli.command("create", "Create a new project").action(async () => {
+    try {
+      await createProjectCMD();
+    } catch (err) {
+      console.error("❌ Failed to create project:", err);
+      process.exit(1);
+    }
+  });
+
+  cli.command("docker", "Add Docker/Nginx to your project").action(async () => {
+    try {
+      await dockerizeProjectCMd();
+    } catch (err) {
+      console.error("❌ Failed to add Docker setup:", err);
+      process.exit(1);
+    }
+  });
+
+  cli.command("quality", "Add Code Quality (ESLint, Prettier, Husky)").action(async () => {
+    try {
+      await AddCodeQualityCMD();
+    } catch (err) {
+      console.error("❌ Failed to add code quality tools:", err);
+      process.exit(1);
+    }
+  });
+
+  cli.command("ui", "Add UI components").action(async () => {
+    try {
+      await addUIComponentsCMD();
+    } catch (err) {
+      console.error("❌ Failed to add UI components:", err);
+      process.exit(1);
+    }
+  });
+
+  cli.command("utils", "Add utility functions/helpers").action(async () => {
+    try {
+      await addUtilsCMD();
+    } catch (err) {
+      console.error("❌ Failed to add utility tools:", err);
+      process.exit(1);
+    }
+  });
 };

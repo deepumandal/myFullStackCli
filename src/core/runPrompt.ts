@@ -1,6 +1,8 @@
-// promptHandler.ts
-import prompts from "prompts";
-import { AnyType, Step } from "../types";
+// core/promptHandler.ts
+import enquirer from "enquirer";
+import { Step, AnyType } from "../types";
+
+const { prompt } = enquirer;
 
 export async function runPrompts(
   step: Step,
@@ -9,21 +11,38 @@ export async function runPrompts(
   let currentStep: Step | undefined = step;
   const stack: Step[] = [];
 
-  console.log("🔍 Initial Step:", currentStep.name); // Debug log
-
   while (currentStep) {
-    console.log(`🟢 Current Step: ${currentStep.name}`); // Debug log
-    console.log(`🔵 Stack:`, stack.map((s) => s.name)); // Debug log
+    const { name, type, message, choices, initial, validate } = currentStep;
 
-    const response = await prompts(currentStep);
-    console.log(`🟡 User Response:`, response); // Debug log
+    const promptConfig: {
+      name: string;
+      type: string;
+      message: string;
+      initial?: string;
+      validate?: (value: string) => boolean | string;
+      choices?: { name: string; message: string }[];
+    } = {
+      name,
+      type,
+      message
+    };
 
-    const key = currentStep.name;
-    const userChoice = response[key];
+    if (choices) {
+      promptConfig.choices = choices.map((choice) => ({
+        name: choice.value,
+        message: choice.title
+      }));
+    }
+
+    if (initial) promptConfig.initial = initial;
+    if (validate) promptConfig.validate = validate;
+
+    const response = await prompt<Record<string, AnyType>>(promptConfig);
+    const userChoice = response[name];
 
     if (userChoice === "exit") {
       console.log("👋 Exiting...");
-    process.exit(0);
+      process.exit(0);
     }
 
     if (userChoice === "back") {
@@ -32,12 +51,11 @@ export async function runPrompts(
       continue;
     }
 
-    answers[key] = userChoice;
+    answers[name] = userChoice;
 
     let nextStep: Step | undefined;
 
     if (currentStep.action) {
-      console.log(`⚙️ Executing action for step: ${currentStep.name}`); // Debug log
       const result = await currentStep.action(answers);
       if (result && typeof result === "object" && result.name) {
         nextStep = result;
@@ -59,6 +77,6 @@ export async function runPrompts(
     currentStep = nextStep;
   }
 
-  console.log("✅ Final Answers:", answers); // Debug log
+  console.log("✅ Final Answers:", answers);
   return answers;
 }

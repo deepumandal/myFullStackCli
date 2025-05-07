@@ -1,4 +1,9 @@
-import { messagesConstants, namesConstants, UIComponentsPaths, UIStylesPaths } from "../../utils/constants";
+import {
+  messagesConstants,
+  namesConstants,
+  UIComponentsPaths,
+  UIStylesPaths
+} from "../../utils/constants";
 import { Step } from "../../types";
 import { promises as fs } from "fs";
 import path from "path";
@@ -12,31 +17,21 @@ const {
 
 export const chooseProjectRootStep: Step = {
   name: chooseProjectRoot,
-  type: "text",
+  type: "input",
   message: enterProjectPathMessage,
-  validate: async (value) => {
+  validate: (value) => {
     if (value.trim().length === 0) {
       return "Please enter a project path.";
     }
-
-    const resolvedPath = path.resolve(value.trim() as string);
-
-    try {
-      // Check if the path exists
-      await fs.access(resolvedPath);
-      return true; // Path exists
-    } catch {
-      // Path does not exist
-      return `The path "${resolvedPath}" does not exist. Do you want to create it?`;
-    }
+    return true;
   }
 };
 
 export const chooseUIComponentsStep: Step = {
   name: chooseUIRoot,
-  type: "text",
-  message: chooseUiCSSRootMessage,
-  // default: UIComponentsPaths,
+  type: "input",
+  message: chooseUIRootMessage,
+  default: UIComponentsPaths,
   validate: async (value) => {
     if (value.trim().length === 0) {
       return "Please enter a UI Component Path.";
@@ -57,9 +52,9 @@ export const chooseUIComponentsStep: Step = {
 
 export const chooseUIStyleComponentsStep: Step = {
   name: chooseUIRoot,
-  type: "text",
-  message: chooseUIRootMessage,
-  // default: UIStylesPaths,
+  type: "input",
+  message: chooseUiCSSRootMessage,
+  default: UIStylesPaths,
   validate: async (value) => {
     if (value.trim().length === 0) {
       return "Please enter a UI Style Path.";

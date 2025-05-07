@@ -18,7 +18,7 @@
     "link": "npm link",
     "test": "pnpm build && npm run link",
     "prepare": "husky install",
-    "lint": "eslint . --ext .ts --fix",
+    "lint": "eslint . --fix",
     "format": "prettier --write .",
     "lint-staged": "lint-staged",
     "spell-check": "cspell '**/*.{ts,js,json,md}'",
@@ -33,6 +33,7 @@
     "@types/gradient-string": "^1.1.6",
     "cac": "^6.7.14",
     "chalk": "4",
+    "enquirer": "^2.4.1",
     "execa": "^9.5.2",
     "figlet": "^1.8.0",
     "fs-extra": "^11.3.0",
@@ -64,7 +65,6 @@
   },
   "lint-staged": {
     "*.{ts,js}": [
-      "pnpm lint",
       "pnpm format"
     ]
   },

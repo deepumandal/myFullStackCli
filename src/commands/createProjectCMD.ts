@@ -18,8 +18,7 @@ const doYouWantToAddUIComponents = async (projectRoot: string, packageManager: s
 
   if (userInput.doYouWantToAddUIComponents) {
     console.log(chalk.green("🚀 Adding UI components...\n"));
-    await addUIComponentsCMD(projectRoot, packageManager)
-    // await addUIComponentScript(projectRoot, packageManager);
+    await addUIComponentsCMD(projectRoot, packageManager);
     console.log(chalk.green("✅ UI components added successfully!\n"));
   }
 };
@@ -48,14 +47,14 @@ export const createProjectCMD = async () => {
     📦 Selected Template: ${chalk.yellow(answers.createFrontend || answers.createBackend)}
 `);
 
-  // await templateGenerator(sourceTemplate, projectRoot);
+  await templateGenerator(sourceTemplate, projectRoot);
 
   const { packageManager } = await runPrompts(choosePackageManagerStep);
   console.log(
     chalk.green(`\n✅ You selected ${chalk.bold(packageManager)} as your package manager.\n`)
   );
 
-  // await installDeps(projectRoot, packageManager as string);
+  await installDeps(projectRoot, packageManager as string);
 
   console.log(chalk.green("\n✅ Project created successfully!\n"));
 
@@ -64,7 +63,7 @@ export const createProjectCMD = async () => {
   */
 
   await doYouWantToAddUIComponents(projectRoot, packageManager as string);
-  // await doYouWantToAddUtils(projectRoot);
+  await doYouWantToAddUtils(projectRoot);
 
   console.log(`
     ${chalk.greenBright("🚀 Next steps:")}

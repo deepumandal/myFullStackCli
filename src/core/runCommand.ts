@@ -1,5 +1,5 @@
 import { execa } from "execa";
-import { AnyType } from "src/types";
+import { AnyType } from "../types";
 
 export async function runCommand(cmd: string) {
   try {
