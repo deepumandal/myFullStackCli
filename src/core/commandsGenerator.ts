@@ -8,7 +8,7 @@ type CommandRule = {
 };
 
 const { createFrontend, createBackend, createProject } = namesConstants;
-const { frontend, backend,ReactJS,NextJS } = choicesConstants;
+const { frontend, backend, ReactJS, NextJS } = choicesConstants;
 
 export const commandRules: CommandRule[] = [
   // ✅ Frontend Project with TypeScript

@@ -9,11 +9,12 @@ import { writeCssFile } from "./writeCssFile";
 import {
   chooseUIComponentsStep,
   chooseUIStyleComponentsStep
-} from "src/core/steps/chooseProjectRootStep";
-import { UIConfigInterface } from "src/types";
-import { UIConfigs } from "src/templates/UI-templates/config";
-import { templateGenerator } from "src/core/templateGenerator";
-import { installDeps } from "src/core/installDeps";
+} from "../../core/steps/chooseProjectRootStep";
+import { UIConfigInterface } from "../../types";
+import { UIConfigs } from "../../templates/UI-templates/config";
+import { templateGenerator } from "../../core/templateGenerator";
+import { installDeps } from "../../core/installDeps";
+import { resolveFromRoot } from "../../utils/resolveFromRoot";
 
 interface InstallUIArgs {
   targetPath: string;
@@ -30,18 +31,19 @@ export const installSelectedUIComponents = async ({
   packageManager,
   selectedComponents
 }: InstallUIArgs): Promise<void> => {
-  const templatePath = resolve(__dirname, "../templates/UI-templates");
+  const templatePath = resolveFromRoot("templates", "UI-templates");
 
-  const actualComponentPath = await ensureValidPath(
-    targetPath,
-    chooseUIComponentsStep,
-    "UI components"
-  );
-  const actualStylesPath = await ensureValidPath(
+  const UIPaths = await ensureValidPath(targetPath, chooseUIComponentsStep, "UI components");
+
+  const actualComponentPath = UIPaths.path + (UIPaths.isNewPath ? "/UI" : "");
+
+  const CSSPaths = await ensureValidPath(
     stylePath,
     chooseUIStyleComponentsStep,
     "UI styles"
   );
+
+  const actualStylesPath = CSSPaths.path + (CSSPaths.isNewPath ? "/Styles" : "");
 
   console.log(chalk.green("🔧 Installing selected components to:"), {
     actualComponentPath,

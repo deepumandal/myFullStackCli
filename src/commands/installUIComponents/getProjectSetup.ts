@@ -1,7 +1,7 @@
-import { choosePackageManagerStep } from "src/core/choosePackageManagerStep";
-import { runPrompts } from "src/core/runPrompt";
-import { chooseProjectRootStep } from "src/core/steps/chooseProjectRootStep";
-import { validatePath } from "src/core/validatePath";
+import { choosePackageManagerStep } from "../../core/choosePackageManagerStep";
+import { runPrompts } from "../../core/runPrompt";
+import { chooseProjectRootStep } from "../../core/steps/chooseProjectRootStep";
+import { validatePath } from "../../core/validatePath";
 
 export const getProjectSetup = async () => {
   let projectRoot = "";

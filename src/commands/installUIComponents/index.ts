@@ -3,10 +3,10 @@
 import chalk from "chalk";
 import { join, resolve } from "path";
 import { getProjectSetup } from "./getProjectSetup";
-import { selectMultipleOptionsSteps } from "src/core/steps/addUIComponentsSteps";
-import { UIConfigs } from "src/templates/UI-templates/config";
-import { runPrompts } from "src/core/runPrompt";
-import { UIComponentsPaths, UIStylesPaths } from "src/utils/constants";
+import { selectMultipleOptionsSteps } from "../../core/steps/addUIComponentsSteps";
+import { UIConfigs } from "../../templates/UI-templates/config";
+import { runPrompts } from "../../core/runPrompt";
+import { UIComponentsPaths, UIStylesPaths } from "../../utils/constants";
 import { installSelectedUIComponents } from "./installSelectedUIComponents";
 
 export const addUIComponentsCMD = async (

@@ -26,7 +26,7 @@ export const doYouWantToAddUIComponentsSteps: Step = {
 };
 
 export const selectMultipleOptionsSteps = (configFile: UIConfigsInterface): Step => {
-  const choices = Object.keys(configFile)
+  const choices = Object.keys(configFile);
 
   console.log("💡 Available UI Components:", choices);
 
@@ -36,8 +36,8 @@ export const selectMultipleOptionsSteps = (configFile: UIConfigsInterface): Step
     message: selectMultipleOptionsMessage,
     choices: choices.map((name) => ({
       title: name,
-      value: name,
-    })),
+      value: name
+    }))
   };
 };
 
