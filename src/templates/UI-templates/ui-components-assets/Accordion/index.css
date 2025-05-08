@@ -1,9 +1,9 @@
 .accordion-root {
-    @apply w-full;
-  }
-  
-  .accordion-trigger {
-    @apply flex
+  @apply w-full;
+}
+
+.accordion-trigger {
+  @apply flex
     flex-1
     text-heading
     items-center
@@ -13,9 +13,8 @@
     /* transition-all */
     hover:underline
     /* [&[data-state=open]>svg]:rotate-180; */;
-  
-    .accordion-icon {
-      @apply h-4 w-4 shrink-0 transition-transform duration-200;
-    }
+
+  .accordion-icon {
+    @apply h-4 w-4 shrink-0 transition-transform duration-200;
   }
-  
+}
