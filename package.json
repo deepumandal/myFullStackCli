@@ -6,7 +6,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Use my Full Stack CLI to built app pre structure in minutes",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,6 +17,7 @@
     "dev": "clear && pnpm build && pnpm start",
     "link": "npm link",
     "test": "pnpm build && npm run link",
+    "publish":"npm publish",
     "prepare": "husky install",
     "lint": "eslint . --fix",
     "format": "prettier --write .",

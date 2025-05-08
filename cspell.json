@@ -12,8 +12,5 @@
     "prettierrc",
     "tsconfig"
   ],
-  "ignorePaths": [
-    "node_modules",
-    "dist"
-  ]
+  "ignorePaths": ["node_modules", "dist"]
 }
