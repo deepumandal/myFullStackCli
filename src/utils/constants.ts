@@ -2,6 +2,7 @@ export const messagesConstants = {
   welcome: "My Full Stack CLI TOOL\n",
   description: "🚀 A full-stack project setup tool for developers 🛠️\n",
   mainCMDMessage: "What would you like to do?",
+  mainCMDMessageHint: '💡 Tip: Press "." to choose current folder!',
   main: {
     createProject: "Create a new project",
     setupCodeQuality: "Setup code quality",
@@ -16,10 +17,8 @@ export const messagesConstants = {
   },
   doYouWantToAddUIComponents: "Do you want to add UI components?",
   doYouWantToAddUtils: "Do you want to add Utils?",
-  addUIComponents:
-    "Please select the UI components you want to add:\n\n💡 Tip: Use the space bar to select multiple options.",
-  addUtils:
-    "Please select the Utils you want to add:\n\n💡 Tip: Use the space bar to select multiple options.",
+  addUIComponents: "Please select the UI components you want to add",
+  addUtils: "Please select the Utils you want to add:",
   createFrontend: "Create Frontend",
   createBackend: "Create Backend",
   createProject: "Create Project",
@@ -29,8 +28,7 @@ export const messagesConstants = {
   enterProjectPath: "Please enter the project root path:",
   chooseUIRoot: "Please enter the UI Installation Path:",
   chooseUiCSSRoot: "Please enter the UI CSS Installation Path:",
-  selectMultipleOptions:
-    "Please select the UI components you want to add:\n\n💡 Tip: Use the space bar to select multiple options.",
+  selectMultipleOptions: "Please select the UI components you want to add:",
   packageManager: "Which package manager do you want to use?"
 };
 

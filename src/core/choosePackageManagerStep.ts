@@ -1,7 +1,5 @@
 import { choicesConstants, messagesConstants, namesConstants } from "../utils/constants";
 import { Step } from "../types";
-import { selectMultipleOptionsSteps } from "./steps/addUIComponentsSteps";
-import { UIConfigs } from "../templates/UI-templates/config";
 
 const { packageManager } = namesConstants;
 const { packageManager: packageManagerMessage } = messagesConstants;
@@ -12,9 +10,9 @@ export const choosePackageManagerStep: Step = {
   type: "select",
   message: packageManagerMessage,
   choices: [
-    { title: "npm", value: "npm" },
-    { title: "yarn", value: "yarn" },
-    { title: "pnpm", value: "pnpm" },
-    { title: "bun", value: "bun" }
+    { title: npm, value: npm },
+    { title: yarn, value: yarn },
+    { title: pnpm, value: pnpm }
+    // { title: bun, value: bun }
   ]
 };

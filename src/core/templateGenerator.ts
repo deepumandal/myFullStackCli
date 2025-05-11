@@ -4,20 +4,26 @@ import ora from "ora";
 import chalk from "chalk";
 import { AnyType } from "../types";
 
-export async function templateGenerator(templateName: string, targetDir: string = ".") {
+export async function templateGenerator(
+  templateName: string,
+  targetDir: string = ".",
+  noSpinner?: boolean
+) {
   const templatePath = resolve(__dirname, "../templates", templateName);
   const cwd = process.cwd();
   const targetPath = targetDir === "." ? cwd : resolve(cwd, targetDir);
 
-  console.log(chalk.blueBright(`\n📦 Installing template: ${chalk.bold(templateName)}\n`));
-
-  const verifySpinner = ora("🔍 Verifying template...").start();
-
   try {
     await fs.access(templatePath);
-    verifySpinner.succeed("✅ Template found");
+    if (!noSpinner) {
+      const verifySpinner = ora("🔍 Verifying template...").start();
+      verifySpinner.succeed("✅ Template found");
+    }
   } catch {
-    verifySpinner.fail(chalk.red(`❌ Template "${templateName}" not found.`));
+    if (!noSpinner) {
+      const verifySpinner = ora("🔍 Verifying template...").start();
+      verifySpinner.fail(chalk.red(`❌ Template "${templateName}" not found.`));
+    }
     process.exit(1);
   }
 
@@ -37,12 +43,13 @@ export async function templateGenerator(templateName: string, targetDir: string 
     }
   }
 
-  const copySpinner = ora("📦 Installing Template...").start();
+  const copySpinner = noSpinner ? null : ora("📦 Installing Template...").start();
 
   try {
     await copyDirectory(templatePath, targetPath);
-    copySpinner.succeed("🎉 Template successfully!");
+    if (copySpinner) copySpinner.succeed("🎉 Template Installed successfully!");
   } catch (err: AnyType) {
-    copySpinner.fail(`❌ Failed to Installing Template: ${chalk.red(err.message)}`);
+    if (copySpinner)
+      copySpinner.fail(`❌ Failed to Installing Template: ${chalk.red(err.message)}`);
   }
 }

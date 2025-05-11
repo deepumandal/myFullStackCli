@@ -6,8 +6,7 @@ import { Step } from "../../types";
 export const ensureValidPath = async (
   initialPath: string,
   step: Step,
-  label: string,
-  destinationFolder?: string
+  label: string
 ): Promise<{ isNewPath: boolean; path: string }> => {
   let currentPath = initialPath;
 

@@ -27,9 +27,6 @@ export const doYouWantToAddUIComponentsSteps: Step = {
 
 export const selectMultipleOptionsSteps = (configFile: UIConfigsInterface): Step => {
   const choices = Object.keys(configFile);
-
-  console.log("💡 Available UI Components:", choices);
-
   return {
     name: selectMultipleUIComponents,
     type: "multiselect",

@@ -41,12 +41,10 @@ export async function runPrompts(
     const userChoice = response[name];
 
     if (userChoice === "exit") {
-      console.log("👋 Exiting...");
       process.exit(0);
     }
 
     if (userChoice === "back") {
-      console.log("🔙 Going back to the previous step...");
       currentStep = stack.pop();
       continue;
     }
@@ -76,7 +74,5 @@ export async function runPrompts(
 
     currentStep = nextStep;
   }
-
-  console.log("✅ Final Answers:", answers);
   return answers;
 }

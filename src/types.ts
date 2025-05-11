@@ -14,6 +14,7 @@ export interface Step {
   initial?: AnyType;
   choices?: Choice[];
   next?: Record<AnyType, Step>;
+  hint?: string;
   defaultNext?: Step;
   default?: AnyType;
   validate?: (value: AnyType) => AnyType;
@@ -22,9 +23,10 @@ export interface Step {
 
 export interface UIConfigInterface {
   path: string;
-  cssPath: string;
-  deps: string[];
-  devDeps: string[];
+  cssPath: string | null;
+  dependencies: string[];
+  siblingDependencies?: string[];
+  devDependencies: string[];
 }
 
 export interface UIConfigsInterface {

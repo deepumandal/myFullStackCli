@@ -27,10 +27,6 @@ export const addUIComponentsCMD = async (
   const componentTargetPath = join(resolvedRoot, UIComponentsPaths);
   const styleTargetPath = join(resolvedRoot, UIStylesPaths);
 
-  console.log(chalk.blue("📂 Project Root:"), resolvedRoot);
-  console.log(chalk.green(`✅ Package Manager: ${chalk.bold(packageManager)}`));
-  console.log(chalk.yellow("🎯 Selected UI Components:"), selectedComponents);
-
   await installSelectedUIComponents({
     targetPath: componentTargetPath,
     stylePath: styleTargetPath,

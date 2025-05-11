@@ -60,6 +60,7 @@ export default defineConfig([
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "error",
       "react/jsx-uses-vars": "error",
+      "@typescript-eslint/no-empty-object-type": "off",
       "react/function-component-definition": [
         "error",
         {
@@ -149,7 +150,7 @@ export default defineConfig([
         "error",
         {
           printWidth: 80,
-          trailingComma: "none",
+          trailingComma: "es5",
           bracketSpacing: true,
           bracketSameLine: false,
           arrowParens: "always",

@@ -9,17 +9,15 @@ import { addUIComponentsCMD } from "./installUIComponents";
 import { doYouWantToAddUtilsSteps } from "../core/steps/addUtilsSteps";
 import { addUtilsScript } from "./installUtilsCMD";
 import { choosePackageManagerStep } from "../core/choosePackageManagerStep";
-import { runCommand } from "../core/runCommand";
 import { installDeps } from "../core/installDeps";
+import { basename } from "path";
 
 const { chooseProjectName } = namesConstants;
 const doYouWantToAddUIComponents = async (projectRoot: string, packageManager: string) => {
   const userInput = await runPrompts(doYouWantToAddUIComponentsSteps);
 
   if (userInput.doYouWantToAddUIComponents) {
-    console.log(chalk.green("🚀 Adding UI components...\n"));
     await addUIComponentsCMD(projectRoot, packageManager);
-    console.log(chalk.green("✅ UI components added successfully!\n"));
   }
 };
 
@@ -27,9 +25,7 @@ const doYouWantToAddUtils = async (targetTemplate: string) => {
   const userInput = await runPrompts(doYouWantToAddUtilsSteps);
 
   if (userInput.doYouWantToAddUtils) {
-    console.log(chalk.green("🚀 Adding UI Utils...\n"));
     await addUtilsScript(targetTemplate);
-    console.log(chalk.green("✅ UI Utils added successfully!\n"));
   }
 };
 
@@ -40,23 +36,20 @@ export const createProjectCMD = async () => {
   const projectRoot: string = answers[chooseProjectName]; // The target template is the project name or current directory when initfs runs
   const sourceTemplate = await commandsGenerator(answers);
 
-  console.log(chalk.cyan("🧠 Summary of your choices:\n"));
+  console.log(chalk.cyan("🧠 Summary of your choices:"));
   console.log(`
-    📁 Project Name:      ${chalk.yellow(answers[chooseProjectName])}
-    🛠️  Project Type:     ${chalk.yellow(answers.createProject)}
+    📁 Project Name:      ${chalk.yellow(answers[chooseProjectName] === "." ? basename(process.cwd()) : answers[chooseProjectName])}
+    🛠️ Project Type:      ${chalk.yellow(answers.createProject)}
     📦 Selected Template: ${chalk.yellow(answers.createFrontend || answers.createBackend)}
 `);
 
   await templateGenerator(sourceTemplate, projectRoot);
 
   const { packageManager } = await runPrompts(choosePackageManagerStep);
-  console.log(
-    chalk.green(`\n✅ You selected ${chalk.bold(packageManager)} as your package manager.\n`)
-  );
 
   await installDeps(projectRoot, packageManager as string);
 
-  console.log(chalk.green("\n✅ Project created successfully!\n"));
+  console.log(chalk.green("✅ Project created successfully!\n"));
 
   /*
 --------------------------- Project Setup ---------------------------
@@ -69,7 +62,7 @@ export const createProjectCMD = async () => {
     ${chalk.greenBright("🚀 Next steps:")}
 
       1. ${chalk.yellow(`cd ${answers[chooseProjectName]}`)}
-      3. ${chalk.yellow("npm run dev")}
+      2. ${chalk.yellow("npm run dev")}
 
     ${chalk.gray("✨ Code quality tools installed: ESLint, Prettier, Husky, Commitlint, CSpell")}
     ${chalk.gray("💅 Styling powered by Tailwind CSS")}

@@ -21,9 +21,9 @@ export const writeCssFile = async (targetPath: string, components: string[]) => 
       try {
         await fs.promises.access(indexCssPath);
         if (!existingCssContent.includes(importLine)) return importLine;
-        console.log(chalk.gray(`🔁 Import already exists: ${importLine}`));
+        // console.log(chalk.gray(`🔁 Import already exists: ${importLine}`));
       } catch {
-        console.log(chalk.yellow(`⚠️ index.css not found in: styles/${component}/`));
+        // console.log(chalk.yellow(`⚠️ index.css not found in: styles/${component}/`));
       }
 
       return null;
@@ -34,8 +34,9 @@ export const writeCssFile = async (targetPath: string, components: string[]) => 
   if (filteredImports.length > 0) {
     const updatedContent = `${existingCssContent.trim()}\n${filteredImports.join("\n")}\n`;
     await fs.promises.writeFile(stylesCssFile, updatedContent, "utf-8");
-    console.log(chalk.green("✅ New CSS imports added!"));
-  } else {
-    console.log(chalk.green("✅ No new CSS imports needed. All are already present."));
+    // console.log(chalk.green("✅ New CSS imports added!"));
   }
+  // else {
+  // console.log(chalk.green("✅ No new CSS imports needed. All are already present."));
+  // }
 };

@@ -1,7 +1,6 @@
 @import "tailwindcss";
-@import "./assets/index.css";
+@import "./assets/styles/index.css";
 @config "../tailwind.config.ts";
-
 
 /* Base Theme Variables */
 @layer base {
@@ -30,7 +29,7 @@
     --secondary-dark: 220, 10%, 20%;
     --destructive-dark: 0, 70%, 50%;
     --input-dark: 220, 10%, 25%;
-    --model-overlay-dark: 0, 0%, 0%; 
+    --model-overlay-dark: 0, 0%, 0%;
     --border-dark: 220, 10%, 25%;
     --card-dark: 220, 15%, 15%;
     --tooltip-dark: 220, 15%, 15%;
@@ -67,7 +66,6 @@
     --card: var(--card-dark);
     --tooltip: var(--tooltip-dark);
   }
-
 
   body {
     @apply bg-background text-text;
