@@ -8,11 +8,15 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".", // ✅ Base URL for module resolution
+    "paths": {
+      "@/*": ["src/*"] // ✅ Aliases for src folder
+    }
   },
   "ts-node": {
     "esm": true
   },
   "include": ["src/**/*.ts"], // ✅ Targets all source files
-  "exclude": ["node_modules", "dist", "bin.js", "src_old", "src/templates/**"]
+  "exclude": ["node_modules", "dist", "bin.js", "src_old", "src/templates/**", "src/templates"]
 }

@@ -6,22 +6,22 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "Use my Full Stack CLI to built app pre structure in minutes",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "tsc && tsc-esm-fix dist",
+    "build": "tsc && tsc-esm-fix dist && node scripts/copyTemplates.mjs",
     "start": "node dist/index.js",
     "dev": "clear && pnpm build && pnpm start",
     "link": "npm link",
     "test": "pnpm build && npm run link",
     "prepare": "husky install",
-    "lint": "eslint . --ext .ts --fix",
+    "lint": "eslint . --fix",
     "format": "prettier --write .",
     "lint-staged": "lint-staged",
-    "spell-check": "cspell '**/*.{ts,js,json,md}'",
+    "spell-check": "cspell \"**/*.{ts,js,json,md}\"",
     "commit": "bash scripts/quick-commit.sh",
     "commit:force": "bash scripts/quick-commit.sh --no-verify",
     "prepublishOnly": "pnpm build"
@@ -33,11 +33,13 @@
     "@types/gradient-string": "^1.1.6",
     "cac": "^6.7.14",
     "chalk": "4",
+    "enquirer": "^2.4.1",
     "execa": "^9.5.2",
     "figlet": "^1.8.0",
     "fs-extra": "^11.3.0",
     "globby": "^14.1.0",
     "gradient-string": "2",
+    "ora": "^8.2.0",
     "prompts": "^2.4.2"
   },
   "devDependencies": {
@@ -63,9 +65,11 @@
   },
   "lint-staged": {
     "*.{ts,js}": [
+      "pnpm format",
       "pnpm lint",
-      "pnpm format"
-    ]
+      "tsc --noEmit --skipLibCheck"
+    ],
+    "!src/templates/**": "echo 'Skipping templates'"
   },
   "files": [
     "dist",

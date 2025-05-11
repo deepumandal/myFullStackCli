@@ -8,7 +8,7 @@ type CommandRule = {
 };
 
 const { createFrontend, createBackend, createProject } = namesConstants;
-const { frontend, backend } = choicesConstants;
+const { frontend, backend, ReactJS, NextJS } = choicesConstants;
 
 export const commandRules: CommandRule[] = [
   // ✅ Frontend Project with TypeScript
@@ -16,12 +16,12 @@ export const commandRules: CommandRule[] = [
     when: (a) => a[createProject] === frontend,
     getCommand: (a) => {
       switch (a[createFrontend]) {
-        case "vite":
-          return `pnpm create vite@latest`;
-        case "next":
-          return `npx create-next-app@latest`;
+        case ReactJS:
+          return "typescript-swc-react-template";
+        case NextJS:
+          return `typescript-next-template`;
         default:
-          return `echo "Invalid choice"`;
+          return `none`;
       }
     }
   },

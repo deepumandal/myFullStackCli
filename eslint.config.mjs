@@ -20,11 +20,24 @@ export default [
     rules: {
       "no-console": ["warn", { allow: ["warn", "error", "log"] }],
       "@typescript-eslint/no-floating-promises": "warn",
-      "@typescript-eslint/no-unused-vars": ["warn"],
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "off",
+        {
+          vars: "all",
+          args: "after-used",
+          ignoreRestSiblings: true,
+          varsIgnorePattern: "^_", // optional: allow _ignored vars
+          argsIgnorePattern: "^_" // optional: allow _ignored args
+        }
+      ],
       "@typescript-eslint/no-unsafe-call": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-return": "off",
-      "@typescript-eslint/no-invalid-void-type": "off"
+      "@typescript-eslint/no-invalid-void-type": "off",
+      "@typescript-eslint/restrict-template-expressions": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unnecessary-condition": "off"
     }
   },
 

@@ -10,7 +10,6 @@ import pluginCSpell from "@cspell/eslint-plugin";
 import prettierPlugin from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
 
-
 export default defineConfig([
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
@@ -37,7 +36,7 @@ export default defineConfig([
       "jsx-a11y": pluginA11y,
       "react-hooks": pluginReactHooks,
       "@cspell": pluginCSpell,
-      prettier: prettierPlugin,
+      prettier: prettierPlugin
     },
     settings: {
       react: {
@@ -60,6 +59,7 @@ export default defineConfig([
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "error",
       "react/jsx-uses-vars": "error",
+      "@typescript-eslint/no-empty-object-type": "off",
       "react/function-component-definition": [
         "error",
         {
@@ -149,7 +149,7 @@ export default defineConfig([
         "error",
         {
           printWidth: 80,
-          trailingComma: "none",
+          trailingComma: "es5",
           bracketSpacing: true,
           bracketSameLine: false,
           arrowParens: "always",

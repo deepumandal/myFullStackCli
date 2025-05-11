@@ -1,6 +1,8 @@
-// promptHandler.ts
-import prompts from "prompts";
-import { AnyType, Step } from "../types";
+// core/promptHandler.ts
+import enquirer from "enquirer";
+import { Step, AnyType } from "../types";
+
+const { prompt } = enquirer;
 
 export async function runPrompts(
   step: Step,
@@ -10,14 +12,35 @@ export async function runPrompts(
   const stack: Step[] = [];
 
   while (currentStep) {
-    const response = await prompts(currentStep);
+    const { name, type, message, choices, initial, validate } = currentStep;
 
-    const key = currentStep.name;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const userChoice = response[key];
+    const promptConfig: {
+      name: string;
+      type: string;
+      message: string;
+      initial?: string;
+      validate?: (value: string) => boolean | string;
+      choices?: { name: string; message: string }[];
+    } = {
+      name,
+      type,
+      message
+    };
+
+    if (choices) {
+      promptConfig.choices = choices.map((choice) => ({
+        name: choice.value,
+        message: choice.title
+      }));
+    }
+
+    if (initial) promptConfig.initial = initial;
+    if (validate) promptConfig.validate = validate;
+
+    const response = await prompt<Record<string, AnyType>>(promptConfig);
+    const userChoice = response[name];
 
     if (userChoice === "exit") {
-      console.log("👋 Exiting...");
       process.exit(0);
     }
 
@@ -26,12 +49,10 @@ export async function runPrompts(
       continue;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    answers[key] = userChoice;
+    answers[name] = userChoice;
 
     let nextStep: Step | undefined;
 
-    // Allow dynamic step from action
     if (currentStep.action) {
       const result = await currentStep.action(answers);
       if (result && typeof result === "object" && result.name) {
@@ -39,8 +60,6 @@ export async function runPrompts(
       }
     }
 
-    // Prioritize: action > next[userChoice] > defaultNext
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!nextStep && currentStep.next && currentStep.next[userChoice]) {
       nextStep = currentStep.next[userChoice];
     }
@@ -53,9 +72,7 @@ export async function runPrompts(
       stack.push(currentStep);
     }
 
-    // console.table(stack)
     currentStep = nextStep;
   }
-
   return answers;
 }
