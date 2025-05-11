@@ -45,11 +45,7 @@ const GridItem = forwardRef<AnyType, GridItemProps>(
       aria-describedby={ariaDescribedBy}
       aria-live={ariaLive}
       role={role}
-      className={cn(
-        border && "app-border",
-        color[BackgroundColor] as ClassType,
-        className
-      )}
+      className={cn(border && "app-border", color[BackgroundColor] as ClassType, className)}
       {...rest}
     >
       {children}

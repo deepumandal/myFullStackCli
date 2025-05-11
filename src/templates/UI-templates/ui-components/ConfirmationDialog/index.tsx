@@ -19,7 +19,7 @@ const ConfirmationDialog = ({
   open,
   onOpenChange,
   handleCancel,
-  handleConfirm,
+  handleConfirm
 }: ConfirmationDialogProps) => (
   <Model modal={model} open={open} onOpenChange={onOpenChange}>
     <Model.Content className="dialog-content" role="alertdialog">
@@ -38,20 +38,12 @@ const ConfirmationDialog = ({
 
       <Model.Footer className="dialog-footer">
         <Model.Close asChild>
-          <Button
-            variant={"destructive"}
-            onClick={handleConfirm}
-            className="dialog-delete"
-          >
+          <Button variant={"destructive"} onClick={handleConfirm} className="dialog-delete">
             Delete
           </Button>
         </Model.Close>
         <Model.Close asChild>
-          <Button
-            variant="outline"
-            onClick={handleCancel}
-            className="dialog-close"
-          >
+          <Button variant="outline" onClick={handleCancel} className="dialog-close">
             Cancel
           </Button>
         </Model.Close>

@@ -38,9 +38,4 @@ const TextVariants: Record<Variants, ClassType> = {
   secondary: "text-secondary-variant"
 } as const;
 
-export {
-  type asElementObjectType,
-  asElementObject,
-  HeadingVariants,
-  TextVariants
-};
+export { type asElementObjectType, asElementObject, HeadingVariants, TextVariants };

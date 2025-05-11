@@ -8,9 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "spell-check": "cspell '**/*.{ts,js,json,md}'",
+    "spell-check": "cspell \"**/*.{ts,js,json,md}\"",
     "commit": "bash scripts/quick-commit.sh",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --noEmit ",
     "commit:force": "bash scripts/quick-commit.sh --no-verify",
     "prepublishOnly": "pnpm build"
   },
@@ -60,8 +60,8 @@
     "src/**/*.{ts,tsx}": [
       "prettier --write",
       "eslint --fix",
-      "pnpm spell-check",
-      "pnpm check-types"
+      "pnpm check-types",
+      "pnpm spell-check"
     ],
     "src/**/*.css": [
       "prettier --write",

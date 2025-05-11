@@ -5,7 +5,7 @@ import {
   ComponentPropsWithoutRef,
   forwardRef,
   ForwardRefExoticComponent,
-  ReactNode,
+  ReactNode
 } from "react";
 import { cn } from "@Utils/ClassName";
 
@@ -33,20 +33,18 @@ const Breadcrumb = forwardRef<
 )) as BreadcrumbComponent;
 Breadcrumb.displayName = "Breadcrumb";
 
-const BreadcrumbList = forwardRef<
-  HTMLOListElement,
-  ComponentPropsWithoutRef<"ol">
->(({ className, ...props }, ref) => (
-  <ol ref={ref} className={cn("breadcrumb-list", className)} {...props} />
-));
+const BreadcrumbList = forwardRef<HTMLOListElement, ComponentPropsWithoutRef<"ol">>(
+  ({ className, ...props }, ref) => (
+    <ol ref={ref} className={cn("breadcrumb-list", className)} {...props} />
+  )
+);
 BreadcrumbList.displayName = "BreadcrumbList";
 
-const BreadcrumbItem = forwardRef<
-  HTMLLIElement,
-  ComponentPropsWithoutRef<"li">
->(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn("breadcrumb-Item", className)} {...props} />
-));
+const BreadcrumbItem = forwardRef<HTMLLIElement, ComponentPropsWithoutRef<"li">>(
+  ({ className, ...props }, ref) => (
+    <li ref={ref} className={cn("breadcrumb-Item", className)} {...props} />
+  )
+);
 BreadcrumbItem.displayName = "BreadcrumbItem";
 
 const BreadcrumbLink = forwardRef<
@@ -57,32 +55,25 @@ const BreadcrumbLink = forwardRef<
 >(({ asChild, className, ...props }, ref) => {
   const Comp = asChild ? Slot : "a";
 
-  return (
-    <Comp ref={ref} className={cn("breadcrumb-link", className)} {...props} />
-  );
+  return <Comp ref={ref} className={cn("breadcrumb-link", className)} {...props} />;
 });
 BreadcrumbLink.displayName = "BreadcrumbLink";
 
-const BreadcrumbPage = forwardRef<
-  HTMLSpanElement,
-  ComponentPropsWithoutRef<"span">
->(({ className, ...props }, ref) => (
-  <span
-    ref={ref}
-    role="link"
-    aria-disabled="true"
-    aria-current="page"
-    className={cn("breadcrumb-page", className)}
-    {...props}
-  />
-));
+const BreadcrumbPage = forwardRef<HTMLSpanElement, ComponentPropsWithoutRef<"span">>(
+  ({ className, ...props }, ref) => (
+    <span
+      ref={ref}
+      role="link"
+      aria-disabled="true"
+      aria-current="page"
+      className={cn("breadcrumb-page", className)}
+      {...props}
+    />
+  )
+);
 BreadcrumbPage.displayName = "BreadcrumbPage";
 
-const BreadcrumbSeparator = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<"li">) => (
+const BreadcrumbSeparator = ({ children, className, ...props }: ComponentProps<"li">) => (
   <li
     role="presentation"
     aria-hidden="true"
@@ -94,10 +85,7 @@ const BreadcrumbSeparator = ({
 );
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
-const BreadcrumbEllipsis = ({
-  className,
-  ...props
-}: ComponentProps<"span">) => (
+const BreadcrumbEllipsis = ({ className, ...props }: ComponentProps<"span">) => (
   <span
     role="presentation"
     aria-hidden="true"

@@ -8,12 +8,12 @@ const badgeVariants = cva("base-badge", {
       default: "default-badge",
       secondary: "secondary-badge",
       destructive: "destructive-badge",
-      outline: "outline-badge",
-    },
+      outline: "outline-badge"
+    }
   },
   defaultVariants: {
     // variant: "default",
-  },
+  }
 });
 
 export interface BadgeProps

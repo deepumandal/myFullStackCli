@@ -1,6 +1,11 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": [],
-  "ignorePaths": ["node_modules", "dist"]
+  "words": [
+    "turbopack"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist"
+  ]
 }

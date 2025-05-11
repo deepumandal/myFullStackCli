@@ -2,12 +2,7 @@
 
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  HTMLAttributes,
-} from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
 import { cn } from "@Utils/ClassName";
 
 interface DropdownMenuProps extends DropdownMenuPrimitive.DropdownMenuProps {
@@ -26,9 +21,7 @@ interface DropdownMenuProps extends DropdownMenuPrimitive.DropdownMenuProps {
   SubTrigger?: typeof DropdownMenuSubTrigger;
   RadioGroup?: typeof DropdownMenuRadioGroup;
 }
-const DropdownMenu = (props: DropdownMenuProps) => (
-  <DropdownMenuPrimitive.Root {...props} />
-);
+const DropdownMenu = (props: DropdownMenuProps) => <DropdownMenuPrimitive.Root {...props} />;
 
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 
@@ -59,8 +52,7 @@ const DropdownMenuSubTrigger = forwardRef<
     <ChevronRight className="ml-auto h-4 w-4" />
   </DropdownMenuPrimitive.SubTrigger>
 ));
-DropdownMenuSubTrigger.displayName =
-  DropdownMenuPrimitive.SubTrigger.displayName;
+DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName;
 
 const DropdownMenuSubContent = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.SubContent>,
@@ -82,8 +74,7 @@ const DropdownMenuSubContent = forwardRef<
     {...props}
   />
 ));
-DropdownMenuSubContent.displayName =
-  DropdownMenuPrimitive.SubContent.displayName;
+DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName;
 
 const DropdownMenuContent = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Content>,
@@ -156,8 +147,7 @@ const DropdownMenuCheckboxItem = forwardRef<
     {children}
   </DropdownMenuPrimitive.CheckboxItem>
 ));
-DropdownMenuCheckboxItem.displayName =
-  DropdownMenuPrimitive.CheckboxItem.displayName;
+DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displayName;
 
 const DropdownMenuRadioItem = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
@@ -213,14 +203,8 @@ const DropdownMenuSeparator = forwardRef<
 ));
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
 
-const DropdownMenuShortcut = ({
-  className,
-  ...props
-}: HTMLAttributes<HTMLSpanElement>) => (
-  <span
-    className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
-    {...props}
-  />
+const DropdownMenuShortcut = ({ className, ...props }: HTMLAttributes<HTMLSpanElement>) => (
+  <span className={cn("ml-auto text-xs tracking-widest opacity-60", className)} {...props} />
 );
 DropdownMenuShortcut.displayName = "DropdownMenuShortcut";
 

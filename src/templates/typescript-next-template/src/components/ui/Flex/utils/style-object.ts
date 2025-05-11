@@ -7,12 +7,7 @@ type JustifyContentType =
   | "space-around"
   | "space-evenly";
 type FlexDirectionType = "row" | "row-reverse" | "column" | "column-reverse";
-type AlignItemsType =
-  | "flex-start"
-  | "flex-end"
-  | "center"
-  | "baseline"
-  | "stretch";
+type AlignItemsType = "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
 
 type AlignContentType =
   | "flex-start"

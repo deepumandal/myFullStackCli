@@ -13,7 +13,7 @@ import {
   alignContentObj,
   alignItemsObj,
   directionObj,
-  justifyObj,
+  justifyObj
 } from "./utils/style-object";
 
 type FlexProps = CommonProps<"flex"> & {
@@ -87,5 +87,5 @@ export {
   type AriaRole,
   type FlexDirectionType,
   type FlexElementType,
-  type JustifyContentType,
+  type JustifyContentType
 };

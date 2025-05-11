@@ -3,12 +3,7 @@ import { AnyType } from "@AppTypes/AnyType";
 import { CommonProps } from "@Config/ui/asElement";
 import { color } from "@UI/Common";
 import { ClassType, cn } from "@Utils/ClassName";
-import {
-  gridColumnsObj,
-  gapObj,
-  GridColumnsType,
-  GapType,
-} from "./utils/style-object";
+import { gridColumnsObj, gapObj, GridColumnsType, GapType } from "./utils/style-object";
 
 type GridProps = CommonProps<"Grid"> & {
   columns: GridColumnsType;

@@ -5,7 +5,7 @@ import {
   List as RadixList,
   Root as RadixRoot,
   TabsProps as RadixTabsProps,
-  Trigger as RadixTrigger,
+  Trigger as RadixTrigger
 } from "@radix-ui/react-tabs";
 import { ComponentPropsWithoutRef, ElementRef, FC, forwardRef } from "react";
 import { cn } from "@Utils/ClassName";
@@ -21,9 +21,7 @@ const Tabs: FC<TabsProps> & {
 const TabsList = forwardRef<
   ElementRef<typeof RadixList>,
   ComponentPropsWithoutRef<typeof RadixList>
->(({ className, ...props }, ref) => (
-  <RadixList ref={ref} className={cn(className)} {...props} />
-));
+>(({ className, ...props }, ref) => <RadixList ref={ref} className={cn(className)} {...props} />);
 TabsList.displayName = RadixList.displayName;
 
 const TabsTrigger = forwardRef<

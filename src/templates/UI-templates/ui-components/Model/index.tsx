@@ -1,22 +1,12 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  HTMLAttributes,
-} from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, HTMLAttributes } from "react";
 import { cn } from "@Utils/ClassName";
 import { modelVariants } from "./utils/model-variants";
 
 interface ModelProps extends RadixDialog.DialogProps {}
 interface ModelContentProps extends RadixDialog.DialogContentProps {
-  BackgroundColor?:
-    | "default"
-    | "primary"
-    | "secondary"
-    | "destructive"
-    | "outline";
+  BackgroundColor?: "default" | "primary" | "secondary" | "destructive" | "outline";
 }
 
 const Trigger = RadixDialog.Trigger;
@@ -31,61 +21,38 @@ const ModelOverlay = forwardRef<
   ElementRef<typeof RadixDialog.Overlay>,
   ComponentPropsWithoutRef<typeof RadixDialog.Overlay>
 >(({ className, ...props }, ref) => (
-  <RadixDialog.Overlay
-    ref={ref}
-    className={cn("model-overlay", className)}
-    {...props}
-  />
+  <RadixDialog.Overlay ref={ref} className={cn("model-overlay", className)} {...props} />
 ));
 ModelOverlay.displayName = RadixDialog.Overlay.displayName;
 
-const ModelContent = forwardRef<
-  ElementRef<typeof RadixDialog.Content>,
-  ModelContentProps
->(({ className, BackgroundColor = "default", children, ...props }, ref) => (
-  <ModelPortal>
-    <ModelOverlay />
-    <RadixDialog.Content
-      ref={ref}
-      className={cn(
-        "model-content",
-        modelVariants({ className, BackgroundColor })
-      )}
-      {...props}
-    >
-      {children}
-      <RadixDialog.Close className="absolute right-8 top-8 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-        <X className="h-4 w-4" />
-        <span className="sr-only">Close</span>
-      </RadixDialog.Close>
-    </RadixDialog.Content>
-  </ModelPortal>
-));
+const ModelContent = forwardRef<ElementRef<typeof RadixDialog.Content>, ModelContentProps>(
+  ({ className, BackgroundColor = "default", children, ...props }, ref) => (
+    <ModelPortal>
+      <ModelOverlay />
+      <RadixDialog.Content
+        ref={ref}
+        className={cn("model-content", modelVariants({ className, BackgroundColor }))}
+        {...props}
+      >
+        {children}
+        <RadixDialog.Close className="absolute right-8 top-8 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+          <X className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </RadixDialog.Close>
+      </RadixDialog.Content>
+    </ModelPortal>
+  )
+);
 ModelContent.displayName = RadixDialog.Content.displayName;
 
-const ModelHeader = ({
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col space-y-1.5 text-center sm:text-left",
-      className
-    )}
-    {...props}
-  />
+const ModelHeader = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("flex flex-col space-y-1.5 text-center sm:text-left", className)} {...props} />
 );
 ModelHeader.displayName = "ModelHeader";
 
-const ModelFooter = ({
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) => (
+const ModelFooter = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-      className
-    )}
+    className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)}
     {...props}
   />
 );
@@ -97,10 +64,7 @@ const ModelTitle = forwardRef<
 >(({ className, ...props }, ref) => (
   <RadixDialog.Title
     ref={ref}
-    className={cn(
-      "text-lg font-semibold leading-none tracking-tight",
-      className
-    )}
+    className={cn("text-lg font-semibold leading-none tracking-tight", className)}
     {...props}
   />
 ));

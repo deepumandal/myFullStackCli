@@ -17,10 +17,6 @@
   "ts-node": {
     "esm": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/templates/typescript-next-template/src/components/ui/Avatar/index.tsx",
-    "src/templates/typescript-next-template/src/components/ui/Accordion/index.tsx"
-  ], // ✅ Targets all source files
-  "exclude": ["node_modules", "dist", "bin.js", "src_old", "src/templates/**"]
+  "include": ["src/**/*.ts"], // ✅ Targets all source files
+  "exclude": ["node_modules", "dist", "bin.js", "src_old", "src/templates/**", "src/templates"]
 }

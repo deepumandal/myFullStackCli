@@ -4,7 +4,7 @@ import {
   ElementRef,
   forwardRef,
   ForwardRefExoticComponent,
-  RefAttributes,
+  RefAttributes
 } from "react";
 import { cn } from "@Utils/ClassName";
 
@@ -20,11 +20,7 @@ const AvatarImage = forwardRef<
   ElementRef<typeof RadixAvatar.Image>,
   ComponentPropsWithoutRef<typeof RadixAvatar.Image>
 >(({ className, ...props }, ref) => (
-  <RadixAvatar.Image
-    ref={ref}
-    className={cn("avatar-image", className)}
-    {...props}
-  />
+  <RadixAvatar.Image ref={ref} className={cn("avatar-image", className)} {...props} />
 ));
 AvatarImage.displayName = RadixAvatar.Image.displayName;
 
@@ -32,11 +28,7 @@ const AvatarFallback = forwardRef<
   ElementRef<typeof RadixAvatar.Fallback>,
   ComponentPropsWithoutRef<typeof RadixAvatar.Fallback>
 >(({ className, ...props }, ref) => (
-  <RadixAvatar.Fallback
-    ref={ref}
-    className={cn("avatar-fallback", className)}
-    {...props}
-  />
+  <RadixAvatar.Fallback ref={ref} className={cn("avatar-fallback", className)} {...props} />
 ));
 AvatarFallback.displayName = RadixAvatar.Fallback.displayName;
 

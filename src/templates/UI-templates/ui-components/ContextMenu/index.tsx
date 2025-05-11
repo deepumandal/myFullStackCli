@@ -1,10 +1,5 @@
 import * as RadixContextMenu from "@radix-ui/react-context-menu";
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  ReactNode,
-} from "react";
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, ReactNode } from "react";
 import { cn } from "@Utils/ClassName";
 
 interface ContextMenuProps extends RadixContextMenu.ContextMenuProps {
@@ -19,10 +14,7 @@ const ContextMenu = ({ children, ...rest }: ContextMenuProps) => (
   <RadixContextMenu.Root {...rest}>{children}</RadixContextMenu.Root>
 );
 
-const Trigger = ({
-  className,
-  ...rest
-}: RadixContextMenu.ContextMenuTriggerProps) => (
+const Trigger = ({ className, ...rest }: RadixContextMenu.ContextMenuTriggerProps) => (
   <RadixContextMenu.Trigger {...rest} className={className} />
 );
 
@@ -57,9 +49,7 @@ interface SubProps {
   children: ReactNode;
 }
 
-const Sub = ({ children }: SubProps) => (
-  <RadixContextMenu.Sub>{children}</RadixContextMenu.Sub>
-);
+const Sub = ({ children }: SubProps) => <RadixContextMenu.Sub>{children}</RadixContextMenu.Sub>;
 
 interface SubTriggerProps {
   children: ReactNode;
@@ -85,9 +75,7 @@ const SubContent = ({ children }: SubContentProps) => (
   </RadixContextMenu.SubContent>
 );
 
-const Separator = () => (
-  <RadixContextMenu.Separator className="h-[1px] bg-violet6 m-[5px]" />
-);
+const Separator = () => <RadixContextMenu.Separator className="h-[1px] bg-violet6 m-[5px]" />;
 
 ContextMenu.Trigger = Trigger;
 ContextMenu.Content = Content;

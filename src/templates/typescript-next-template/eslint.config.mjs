@@ -10,7 +10,6 @@ import pluginCSpell from "@cspell/eslint-plugin";
 import prettierPlugin from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
 
-
 export default defineConfig([
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
@@ -37,7 +36,7 @@ export default defineConfig([
       "jsx-a11y": pluginA11y,
       "react-hooks": pluginReactHooks,
       "@cspell": pluginCSpell,
-      prettier: prettierPlugin,
+      prettier: prettierPlugin
     },
     settings: {
       react: {

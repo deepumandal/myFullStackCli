@@ -6,7 +6,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Use my Full Stack CLI to built app pre structure in minutes",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,12 +17,11 @@
     "dev": "clear && pnpm build && pnpm start",
     "link": "npm link",
     "test": "pnpm build && npm run link",
-    "publish":"npm publish",
     "prepare": "husky install",
     "lint": "eslint . --fix",
     "format": "prettier --write .",
     "lint-staged": "lint-staged",
-    "spell-check": "cspell '**/*.{ts,js,json,md}'",
+    "spell-check": "cspell \"**/*.{ts,js,json,md}\"",
     "commit": "bash scripts/quick-commit.sh",
     "commit:force": "bash scripts/quick-commit.sh --no-verify",
     "prepublishOnly": "pnpm build"
@@ -66,8 +65,11 @@
   },
   "lint-staged": {
     "*.{ts,js}": [
-      "pnpm format"
-    ]
+      "pnpm format",
+      "pnpm lint",
+      "tsc --noEmit --skipLibCheck"
+    ],
+    "!src/templates/**": "echo 'Skipping templates'"
   },
   "files": [
     "dist",

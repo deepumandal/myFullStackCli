@@ -25,10 +25,7 @@ export default ({
         content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no"
       />
       {isProduction && (
-        <meta
-          name="google-site-verification"
-          content={getOrThrowEnv("GOOGLE_SITE_VERIFICATION")}
-        />
+        <meta name="google-site-verification" content={getOrThrowEnv("GOOGLE_SITE_VERIFICATION")} />
       )}
     </head>
     <body className="no-scrollbar" suppressHydrationWarning>
